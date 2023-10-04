@@ -1,9 +1,15 @@
 
+.container{
+  width: 100%;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+}
 .board {
   display: grid;
   grid-template-columns: repeat(3, 1fr); 
   gap: 10px; 
-  width: 680px;
+  width: 100%;
   margin: auto;
   margin-top: 1rem;
 }
@@ -19,10 +25,11 @@
   font-weight: bold;
 }
 
-.board__cell[data-type='X'] {
-  color: blue !important;
+
+.board__cell--X {
+  color: blue;
 }
 
-.board__cell[data-type='O'] {
-  color: red !important;
+.board__cell--O {
+  color: red;
 }
