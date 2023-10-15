@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import historyContext from '../../contexts/historyContext';
 import CellComponent from '../CellComponent';
 
-function BoardComponent({ cells, handleCellClick }) {
+function BoardComponent() {
+    const {cells, handleCellClick} = useContext(historyContext);
     return (
         <div className='board'>
             {cells.map((_, index) => (

@@ -1,8 +1,13 @@
-function PlayerComponent({ player }) {
+import React, { useContext } from "react";
+import historyContext from "../../contexts/historyContext";
+
+function PlayerComponent() {
+    const {nextPlayer} = useContext(historyContext);
     return (
         <div>
-            <p><strong>Player:</strong> {player}</p>
+            <p><strong>Player:</strong> {nextPlayer}</p>
         </div>
     );
 }
-export default PlayerComponent;
+
+export default React.memo(PlayerComponent);

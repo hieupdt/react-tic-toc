@@ -1,9 +1,9 @@
-import { useContext } from 'react';
+import React,{ useContext, useCallback } from 'react';
 import { getLastItem } from '../../services/common';
 import historyContext from '../../contexts/historyContext';
-function WinnerComponent(props) {
-    const { history } = useContext(historyContext);
-    const { player } = props;
+function WinnerComponent() {
+    console.log("MyComponent is re-rendering");
+    const { history, currentPlayer } = useContext(historyContext);
     if (!history) {
         console.error("History is undefined. Make sure this component is wrapped within a historyContext.Provider.");
         return null;
@@ -20,25 +20,24 @@ function WinnerComponent(props) {
         [2, 4, 6], // Đường chéo phụ (phải sang trái)
     ];
 
-    const checkWin = (board, player) => {
+    const checkWin = (board, currentPlayer) => {
         for (const condition of winConditions) {
             const [a, b, c] = condition;
-            if (board[a] === player && board[b] === player && board[c] === player) {
+            if (board[a] === currentPlayer && board[b] === currentPlayer && board[c] === currentPlayer) {
                 return true;
             }
         }
         return false;
     };
 
-    if (checkWin(board, player)) {
+    if (checkWin(board, currentPlayer)) {
         return (
             <div>
-                <p><strong>Winner Player:</strong> {player}</p>
+                <p><strong>Winner player:</strong> {currentPlayer}</p>
             </div>
         );
     }
 
 }
-
 
 export default WinnerComponent;
